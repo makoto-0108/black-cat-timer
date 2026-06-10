@@ -30,4 +30,6 @@ document.getElementById("startButton").addEventListener("click", function () {
 
   }, 1000);
 
+  const timerDisplay = document.getElementById("timer");
+
 });
