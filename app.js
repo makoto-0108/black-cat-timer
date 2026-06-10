@@ -39,7 +39,7 @@ function resetIdleTimer() {
   idleTimer = setTimeout(function () {
     document.getElementById("message").textContent =
       "まだ見てるん？ちょっと休憩せーへん？";
-  }, 30000); // 30秒でテスト（あとで変更OK）
+  }, 10000); // 10秒でテスト（あとで変更OK）
 }
 
 // ユーザーの操作を検知
