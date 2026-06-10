@@ -1,43 +1,33 @@
-let timerInterval;
-
 document.getElementById("startButton").addEventListener("click", function () {
 
-// タイマー開始メッセージ
-document.getElementById("message").textContent = "タイマー開始やで";
+  let timeLeft = 60 * 60; // 60分
+  const timerDisplay = document.getElementById("timer");
+  const message = document.getElementById("message");
 
-// 60分 = 3600秒
-let timeLeft = 60 * 60;
+  message.textContent = "タイマー開始やで";
 
-const timerDisplay = document.getElementById("timer");
+  const interval = setInterval(function () {
 
-// 既存タイマー停止
-clearInterval(timerInterval);
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
 
-timerInterval = setInterval(function () {
+    timerDisplay.textContent =
+      String(minutes).padStart(2, "0") + ":" +
+      String(seconds).padStart(2, "0");
 
-```
-let minutes = Math.floor(timeLeft / 60);
-let seconds = timeLeft % 60;
+    // 30分
+    if (timeLeft === 30 * 60) {
+      message.textContent = "休憩せーへん？";
+    }
 
-timerDisplay.textContent =
-  String(minutes).padStart(2, "0") +
-  ":" +
-  String(seconds).padStart(2, "0");
+    // 終了
+    if (timeLeft === 0) {
+      message.textContent = "今日はここまでにしとこか";
+      clearInterval(interval);
+    }
 
-// 30分経過
-if (timeLeft === 30 * 60) {
-  document.getElementById("message").textContent = "休憩せーへん？";
-}
+    timeLeft--;
 
-// 60分終了
-if (timeLeft === 0) {
-  document.getElementById("message").textContent = "今日はここまでにしとこか";
-  clearInterval(timerInterval);
-}
-
-timeLeft--;
-```
-
-}, 1000);
+  }, 1000);
 
 });
