@@ -4,6 +4,6 @@ document.getElementById("startButton").addEventListener("click", function() {
 
   setTimeout(function() {
     document.getElementById("message").textContent = "そろそろ休憩しない？";
-  }, 10000);
+  }, 2000);
 
 });
