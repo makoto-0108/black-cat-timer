@@ -1,4 +1,9 @@
+body {
+  text-align: center;
+}
+
 img {
-  width: 200px;
+  width: 60%;
+  max-width: 250px;
   height: auto;
 }
