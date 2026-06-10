@@ -33,3 +33,22 @@ document.getElementById("startButton").addEventListener("click", function () {
   const timerDisplay = document.getElementById("timer");
 
 });
+
+let idleTimer;
+
+// ユーザー操作があるたびリセット
+function resetIdleTimer() {
+  clearTimeout(idleTimer);
+
+  idleTimer = setTimeout(function () {
+    document.getElementById("message").textContent = "まだ見てるん？ちょっと休憩せーへん？";
+  }, 30000); // 30秒操作なしで発火（テスト用）
+}
+
+// 画面触ったらリセット
+document.addEventListener("mousemove", resetIdleTimer);
+document.addEventListener("keydown", resetIdleTimer);
+document.addEventListener("touchstart", resetIdleTimer);
+
+// 初期起動
+resetIdleTimer();
