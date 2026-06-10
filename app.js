@@ -29,3 +29,23 @@ document.getElementById("startButton").addEventListener("click", function () {
   }, 1000);
 
 });
+
+let idleTimer;
+
+// 無操作リセット関数
+function resetIdleTimer() {
+  clearTimeout(idleTimer);
+
+  idleTimer = setTimeout(function () {
+    document.getElementById("message").textContent =
+      "まだ見てるん？ちょっと休憩せーへん？";
+  }, 30000); // 30秒でテスト（あとで変更OK）
+}
+
+// ユーザーの操作を検知
+document.addEventListener("mousemove", resetIdleTimer);
+document.addEventListener("keydown", resetIdleTimer);
+document.addEventListener("touchstart", resetIdleTimer);
+
+// 初期起動
+resetIdleTimer();
