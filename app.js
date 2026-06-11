@@ -1,3 +1,4 @@
+alert("app.js最新版");
 let timerInterval;
 let idleTimer;
 
