@@ -1,95 +1,78 @@
-document.getElementById("startButton").addEventListener("click", function () {
 let timerInterval;
-  let timeLeft = 60 * 60;
-  const timerDisplay = document.getElementById("timer");
-  const message = document.getElementById("message");
+let idleTimer;
 
-  message.textContent = "タイマー開始やで";
+// スタートボタン
+document.getElementById("startButton").addEventListener("click", function () {
 
-  const interval = setInterval(function () {
+// 前のタイマー停止
+clearInterval(timerInterval);
 
-    let minutes = Math.floor(timeLeft / 60);
-    let seconds = timeLeft % 60;
+let timeLeft = 60 * 60; // 60分
 
-    timerDisplay.textContent =
-      String(minutes).padStart(2, "0") + ":" +
-      String(seconds).padStart(2, "0");
+const timerDisplay = document.getElementById("timer");
+const message = document.getElementById("message");
 
-    if (timeLeft === 30 * 60) {
-      message.textContent = "休憩せーへん？";
-    }
+message.textContent = "タイマー開始やで";
 
-    if (timeLeft === 0) {
-      message.textContent = "今日はここまでにしとこか";
-      clearInterval(interval);
-    }
+timerInterval = setInterval(function () {
 
-    timeLeft--;
+```
+let minutes = Math.floor(timeLeft / 60);
+let seconds = timeLeft % 60;
 
-  }, 1000);
+timerDisplay.textContent =
+  String(minutes).padStart(2, "0") +
+  ":" +
+  String(seconds).padStart(2, "0");
+
+// 30分経過
+if (timeLeft === 30 * 60) {
+  message.textContent = "休憩せーへん？";
+}
+
+// 終了
+if (timeLeft === 0) {
+  message.textContent = "今日はここまでにしとこか";
+  clearInterval(timerInterval);
+}
+
+timeLeft--;
+```
+
+}, 1000);
 
 });
 
-let idleTimer;
+// ストップボタン
+document.getElementById("stopButton").addEventListener("click", function () {
 
-// 無操作リセット関数
+clearInterval(timerInterval);
+
+document.getElementById("message").textContent =
+"おつかれさま。またね🐈‍⬛";
+
+});
+
+// 無操作検知
 function resetIdleTimer() {
-  clearTimeout(idleTimer);
 
-  idleTimer = setTimeout(function () {
-    document.getElementById("message").textContent =
-      "まだ見てるん？ちょっと休憩せーへん？";
-  }, 10000); // 10秒でテスト（あとで変更OK）
+clearTimeout(idleTimer);
+
+idleTimer = setTimeout(function () {
+
+```
+document.getElementById("message").textContent =
+  "まだ見てるん？ちょっと休憩せーへん？";
+```
+
+}, 10000); // テスト用10秒
+
 }
 
-// ユーザーの操作を検知
+// 操作検知
 document.addEventListener("mousemove", resetIdleTimer);
 document.addEventListener("keydown", resetIdleTimer);
 document.addEventListener("touchstart", resetIdleTimer);
 
-// 初期起動
+// 初期化
 resetIdleTimer();
-let timerInterval;
-
-document.getElementById("startButton").addEventListener("click", function () {
-
-  // ★これが超重要：前のタイマーを止める
-  clearInterval(timerInterval);
-
-  let timeLeft = 60 * 60;
-  const timerDisplay = document.getElementById("timer");
-  const message = document.getElementById("message");
-
-  message.textContent = "タイマー開始やで";
-
-  timerInterval = setInterval(function () {
-
-    let minutes = Math.floor(timeLeft / 60);
-    let seconds = timeLeft % 60;
-
-    timerDisplay.textContent =
-      String(minutes).padStart(2, "0") + ":" +
-      String(seconds).padStart(2, "0");
-
-    if (timeLeft === 30 * 60) {
-      message.textContent = "休憩せーへん？";
-    }
-
-    if (timeLeft === 0) {
-      message.textContent = "今日はここまでにしとこか";
-      clearInterval(timerInterval);
-    }
-
-    timeLeft--;
-
-  }, 1000);
-
-});
-document.getElementById("stopButton").addEventListener("click", function () {
-
-  clearInterval(timerInterval);
-
-  document.getElementById("message").textContent =
-    "おつかれさま。またね🐈‍⬛";
-
-});
