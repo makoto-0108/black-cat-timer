@@ -1,5 +1,5 @@
 document.getElementById("startButton").addEventListener("click", function () {
-
+let timerInterval;
   let timeLeft = 60 * 60;
   const timerDisplay = document.getElementById("timer");
   const message = document.getElementById("message");
@@ -83,5 +83,13 @@ document.getElementById("startButton").addEventListener("click", function () {
     timeLeft--;
 
   }, 1000);
+
+});
+document.getElementById("stopButton").addEventListener("click", function () {
+
+  clearInterval(timerInterval);
+
+  document.getElementById("message").textContent =
+    "おつかれさま。またね🐈‍⬛";
 
 });
