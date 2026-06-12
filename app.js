@@ -1,44 +1,49 @@
-alert("JS読めてる");
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener("DOMContentLoaded", function () {
+const startBtn = document.getElementById("startButton");
+const stopBtn = document.getElementById("stopButton");
+const timerDisplay = document.getElementById("timer");
+const message = document.getElementById("message");
 
-  const startBtn = document.getElementById("startButton");
-  const stopBtn = document.getElementById("stopButton");
-  const timerDisplay = document.getElementById("timer");
-  const message = document.getElementById("message");
+if (!startBtn || !stopBtn || !timerDisplay || !message) {
+console.log("要素が見つからない");
+return;
+}
 
-  let timerInterval;
+let timerInterval;
 
-  startBtn.addEventListener("click", function () {
+startBtn.addEventListener("click", () => {
 
+```
+clearInterval(timerInterval);
+
+let timeLeft = 60 * 60;
+
+message.textContent = "開始したで";
+
+timerInterval = setInterval(() => {
+
+  let m = Math.floor(timeLeft / 60);
+  let s = timeLeft % 60;
+
+  timerDisplay.textContent = m + ":" + s;
+
+  if (timeLeft <= 0) {
     clearInterval(timerInterval);
+    message.textContent = "終了やで";
+    return;
+  }
 
-    let timeLeft = 60 * 60;
+  timeLeft--;
 
-    message.textContent = "開始";
+}, 1000);
+```
 
-    timerInterval = setInterval(function () {
+});
 
-      let m = Math.floor(timeLeft / 60);
-      let s = timeLeft % 60;
-
-      timerDisplay.textContent = m + ":" + s;
-
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        message.textContent = "終了";
-        return;
-      }
-
-      timeLeft--;
-
-    }, 1000);
-
-  });
-
-  stopBtn.addEventListener("click", function () {
-    clearInterval(timerInterval);
-    message.textContent = "停止";
-  });
+stopBtn.addEventListener("click", () => {
+clearInterval(timerInterval);
+message.textContent = "止めたで";
+});
 
 });
