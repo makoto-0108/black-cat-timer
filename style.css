@@ -1,9 +1,44 @@
 body {
-  text-align: center;
+text-align: center;
+font-family: sans-serif;
+background: #111;
+color: #fff;
+margin: 0;
+padding: 20px;
+}
+
+h1 {
+font-size: 24px;
+margin-bottom: 20px;
 }
 
 img {
-  width: 60%;
-  max-width: 250px;
-  height: auto;
+width: 60%;
+max-width: 250px;
+height: auto;
+margin-bottom: 20px;
+}
+
+#timer {
+font-size: 48px;
+font-weight: bold;
+margin: 20px 0;
+}
+
+button {
+padding: 10px 20px;
+margin: 5px;
+font-size: 16px;
+border: none;
+border-radius: 8px;
+}
+
+#startButton {
+background: #4caf50;
+color: white;
+}
+
+#stopButton {
+background: #f44336;
+color: white;
 }
