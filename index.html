@@ -1,28 +1,81 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
+let timerInterval;
+let idleTimer;
 
-  <link rel="icon" href="./favicon.png?v=3">
-  <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=3">
+// スタートボタン
+document.getElementById("startButton").addEventListener("click", function () {
 
-  <title>黒猫タイマー</title>
+// 前のタイマーを停止
+clearInterval(timerInterval);
 
-  <link rel="stylesheet" href="style.css">
-</head>
+let timeLeft = 60 * 60; // 60分
 
-<body>
-  <h1>黒猫タイマー</h1>
+const timerDisplay = document.getElementById("timer");
+const message = document.getElementById("message");
 
-  <img src="cat.png" alt="黒猫">
+message.textContent = "タイマー開始やで";
 
-  <p id="timer">60:00</p>
+timerInterval = setInterval(function () {
 
-  <p id="message">スマホぼちぼちにね</p>
+```
+let minutes = Math.floor(timeLeft / 60);
+let seconds = timeLeft % 60;
 
-  <button id="startButton">スタート</button>
-  <button id="stopButton">ストップ</button>
+timerDisplay.textContent =
+  String(minutes).padStart(2, "0") +
+  ":" +
+  String(seconds).padStart(2, "0");
 
-  <script src="app.js"></script>
-</body>
-</html>
+// 30分経過
+if (timeLeft === 30 * 60) {
+  message.textContent = "休憩せーへん？";
+}
+
+// 60分終了
+if (timeLeft <= 0) {
+
+  message.textContent = "今日はここまでにしとこか";
+
+  clearInterval(timerInterval);
+  return;
+}
+
+timeLeft--;
+```
+
+}, 1000);
+
+});
+
+// ストップボタン
+document.getElementById("stopButton").addEventListener("click", function () {
+
+clearInterval(timerInterval);
+
+document.getElementById("message").textContent =
+"おつかれさま。またね🐈‍⬛";
+
+});
+
+// 無操作検知
+function resetIdleTimer() {
+
+clearTimeout(idleTimer);
+
+idleTimer = setTimeout(function () {
+
+```
+document.getElementById("message").textContent =
+  "まだ見てるん？ちょっと休憩せーへん？";
+```
+
+}, 10000); // テスト用10秒
+
+}
+
+// 操作検知
+document.addEventListener("mousemove", resetIdleTimer);
+document.addEventListener("keydown", resetIdleTimer);
+document.addEventListener("touchstart", resetIdleTimer);
+
+// 初期化
+resetIdleTimer();
