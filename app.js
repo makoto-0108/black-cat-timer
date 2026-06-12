@@ -1,21 +1,28 @@
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", () => {
 
 let timerInterval;
 let idleTimer;
 
-// スタートボタン
-document.getElementById("startButton").addEventListener("click", function () {
+const startBtn = document.getElementById("startButton");
+const stopBtn = document.getElementById("stopButton");
+const timerDisplay = document.getElementById("timer");
+const message = document.getElementById("message");
+
+if (!startBtn || !stopBtn || !timerDisplay || !message) {
+console.log("要素が見つからない");
+return;
+}
+
+// スタート
+startBtn.addEventListener("click", () => {
 
 clearInterval(timerInterval);
 
 let timeLeft = 60 * 60;
 
-const timerDisplay = document.getElementById("timer");
-const message = document.getElementById("message");
-
 message.textContent = "タイマー開始やで";
 
-timerInterval = setInterval(function () {
+timerInterval = setInterval(() => {
 
 ```
 let minutes = Math.floor(timeLeft / 60);
@@ -43,30 +50,19 @@ timeLeft--;
 
 });
 
-// ストップボタン
-document.getElementById("stopButton").addEventListener("click", function () {
-
+// ストップ
+stopBtn.addEventListener("click", () => {
 clearInterval(timerInterval);
-
-document.getElementById("message").textContent =
-"おつかれさま。またね🐈‍⬛";
-
+message.textContent = "おつかれさま。またね🐈‍⬛";
 });
 
-// 無操作検知
+// 無操作
 function resetIdleTimer() {
-
 clearTimeout(idleTimer);
 
-idleTimer = setTimeout(function () {
-
-```
-document.getElementById("message").textContent =
-  "まだ見てるん？ちょっと休憩せーへん？";
-```
-
+idleTimer = setTimeout(() => {
+message.textContent = "まだ見てるん？ちょっと休憩せーへん？";
 }, 10000);
-
 }
 
 document.addEventListener("mousemove", resetIdleTimer);
