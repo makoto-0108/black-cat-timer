@@ -1,1 +1,1 @@
-console.log("JS読み込みOK");
+alert("JS読み込み成功");
