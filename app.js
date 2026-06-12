@@ -8,8 +8,9 @@ const stopBtn = document.getElementById("stopButton");
 const timerDisplay = document.getElementById("timer");
 const message = document.getElementById("message");
 
+// 安全チェック
 if (!startBtn || !stopBtn || !timerDisplay || !message) {
-console.log("要素が見つからない");
+console.log("HTML要素が見つからない");
 return;
 }
 
@@ -29,8 +30,7 @@ let minutes = Math.floor(timeLeft / 60);
 let seconds = timeLeft % 60;
 
 timerDisplay.textContent =
-  String(minutes).padStart(2, "0") +
-  ":" +
+  String(minutes).padStart(2, "0") + ":" +
   String(seconds).padStart(2, "0");
 
 if (timeLeft === 30 * 60) {
@@ -56,19 +56,23 @@ clearInterval(timerInterval);
 message.textContent = "おつかれさま。またね🐈‍⬛";
 });
 
-// 無操作
+// 無操作検知
 function resetIdleTimer() {
+
 clearTimeout(idleTimer);
 
 idleTimer = setTimeout(() => {
 message.textContent = "まだ見てるん？ちょっと休憩せーへん？";
 }, 10000);
+
 }
 
+// 操作検知
 document.addEventListener("mousemove", resetIdleTimer);
 document.addEventListener("keydown", resetIdleTimer);
 document.addEventListener("touchstart", resetIdleTimer);
 
+// 初期化
 resetIdleTimer();
 
 });
