@@ -1,20 +1,14 @@
+window.addEventListener("DOMContentLoaded", function () {
+
 let timerInterval;
 let idleTimer;
-
-// 通知許可
-if ("Notification" in window) {
-if (Notification.permission !== "granted") {
-Notification.requestPermission();
-}
-}
 
 // スタートボタン
 document.getElementById("startButton").addEventListener("click", function () {
 
-// 前のタイマーを停止
 clearInterval(timerInterval);
 
-let timeLeft = 60 * 60; // 60分
+let timeLeft = 60 * 60;
 
 const timerDisplay = document.getElementById("timer");
 const message = document.getElementById("message");
@@ -32,30 +26,12 @@ timerDisplay.textContent =
   ":" +
   String(seconds).padStart(2, "0");
 
-// 30分経過通知
 if (timeLeft === 30 * 60) {
-
   message.textContent = "休憩せーへん？";
-
-  if (Notification.permission === "granted") {
-    new Notification("🐈 黒猫タイマー", {
-      body: "30分経過したで。ちょっと休憩せーへん？"
-    });
-  }
-
 }
 
-// 60分終了通知
 if (timeLeft <= 0) {
-
   message.textContent = "今日はここまでにしとこか";
-
-  if (Notification.permission === "granted") {
-    new Notification("🐈‍⬛ 黒猫タイマー", {
-      body: "1時間経過したで。今日はここまでにしとこか。"
-    });
-  }
-
   clearInterval(timerInterval);
   return;
 }
@@ -89,14 +65,14 @@ document.getElementById("message").textContent =
   "まだ見てるん？ちょっと休憩せーへん？";
 ```
 
-}, 10000); // テスト用10秒
+}, 10000);
 
 }
 
-// 操作検知
 document.addEventListener("mousemove", resetIdleTimer);
 document.addEventListener("keydown", resetIdleTimer);
 document.addEventListener("touchstart", resetIdleTimer);
 
-// 初期化
 resetIdleTimer();
+
+});
