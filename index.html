@@ -1,83 +1,34 @@
+<!DOCTYPE html>
 
-let timerInterval;
-let idleTimer;
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-// スタートボタン
-document.getElementById("startButton").addEventListener("click", function () {
+  <title>黒猫タイマー</title>
 
-// 前のタイマーを停止
-clearInterval(timerInterval);
+  <!-- キャッシュ対策つき -->
 
-let timeLeft = 60 * 60; // 60分
+  <link rel="stylesheet" href="./style.css?v=10">
+  <link rel="icon" href="./favicon.png?v=10">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=10">
+</head>
 
-const timerDisplay = document.getElementById("timer");
-const message = document.getElementById("message");
+<body>
 
-message.textContent = "タイマー開始やで";
+  <h1>黒猫タイマー</h1>
 
-timerInterval = setInterval(function () {
+  <img src="./cat.png" alt="黒猫">
 
-```
-let minutes = Math.floor(timeLeft / 60);
-let seconds = timeLeft % 60;
+  <p id="timer">60:00</p>
 
-timerDisplay.textContent =
-  String(minutes).padStart(2, "0") +
-  ":" +
-  String(seconds).padStart(2, "0");
+  <p id="message">スマホぼちぼちにね</p>
 
-// 30分経過
-if (timeLeft === 30 * 60) {
-  message.textContent = "休憩せーへん？";
-}
+<button id="startButton">スタート</button> <button id="stopButton">ストップ</button>
 
-// 60分終了
-if (timeLeft <= 0) {
+  <!-- JSもキャッシュ対策 -->
 
-  message.textContent = "今日はここまでにしとこか";
+  <script src="./app.js?v=10"></script>
 
-  clearInterval(timerInterval);
-  return;
-}
-
-timeLeft--;
-```
-
-}, 1000);
-
-});
-
-// ストップボタン
-document.getElementById("stopButton").addEventListener("click", function () {
-
-clearInterval(timerInterval);
-
-document.getElementById("message").textContent =
-"おつかれさま。またね🐈‍⬛";
-
-});
-
-// 無操作検知
-function resetIdleTimer() {
-
-clearTimeout(idleTimer);
-
-idleTimer = setTimeout(function () {
-
-```
-document.getElementById("message").textContent =
-  "まだ見てるん？ちょっと休憩せーへん？";
-```
-
-}, 10000); // テスト用10秒
-
-}
-
-// 操作検知
-document.addEventListener("mousemove", resetIdleTimer);
-document.addEventListener("keydown", resetIdleTimer);
-document.addEventListener("touchstart", resetIdleTimer);
-
-// 初期化
-resetIdleTimer();
-
+</body>
+</html>
