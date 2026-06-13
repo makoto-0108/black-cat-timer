@@ -11,7 +11,7 @@ startButton.addEventListener("click", function () {
 ```
 clearInterval(timerInterval);
 
-let timeLeft = 10; // テスト用
+let timeLeft = 60 * 60;
 
 timerInterval = setInterval(function () {
 
