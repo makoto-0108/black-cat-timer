@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     clearInterval(timerInterval);
 
-    let timeLeft = 60;
+    let timeLeft = 60 * 60;
 
     timerInterval = setInterval(function () {
 
@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   stopButton.addEventListener("click", function () {
+
+    alert("ストップ押された");
 
     clearInterval(timerInterval);
 
