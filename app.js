@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let timerInterval;
   let timeLeft = 60 * 60;
+  let isRunning = false;
 
-  // 初期表示（ここがポイント）
   function updateDisplay() {
     let minutes = Math.floor(timeLeft / 60);
     let seconds = timeLeft % 60;
@@ -22,9 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   startButton.addEventListener("click", function () {
 
-    clearInterval(timerInterval);
+    if (isRunning) return;
 
     message.textContent = "タイマー開始やで";
+    isRunning = true;
 
     timerInterval = setInterval(function () {
 
@@ -32,15 +33,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
       updateDisplay();
 
-      // 30分
       if (timeLeft === 30 * 60) {
         message.textContent = "休憩せーへん？";
       }
 
-      // 0分
       if (timeLeft <= 0) {
-        message.textContent = "今日はここまでにしとこか🐈‍⬛";
         clearInterval(timerInterval);
+        message.textContent = "今日はここまでにしとこか🐈‍⬛";
+        isRunning = false;
       }
 
     }, 1000);
@@ -50,9 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
   stopButton.addEventListener("click", function () {
 
     clearInterval(timerInterval);
-
-    timeLeft = 60 * 60;
-    updateDisplay();
+    isRunning = false;
 
     message.textContent = "停止したで";
 
