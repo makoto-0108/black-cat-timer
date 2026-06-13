@@ -3,36 +3,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const startButton = document.getElementById("startButton");
   const timerDisplay = document.getElementById("timer");
 
-  let timerInterval;
-
   startButton.addEventListener("click", function () {
 
-    clearInterval(timerInterval);
+    alert("クリック成功");
 
-    let timeLeft = 10; // テスト用10秒
+    let count = 0;
 
-    timerInterval = setInterval(function () {
+    setInterval(function () {
 
-      timerDisplay.textContent = timeLeft;
+      count++;
 
-      timeLeft--;
-
-      if (timeLeft < 0) {
-        clearInterval(timerInterval);
-      }
+      alert("カウント " + count);
 
     }, 1000);
 
-  });
-
-});document.addEventListener("DOMContentLoaded", function () {
-
-  alert("JS読めてる");
-
-  const startButton = document.getElementById("startButton");
-
-  startButton.addEventListener("click", function () {
-    alert("スタート押された");
   });
 
 });
