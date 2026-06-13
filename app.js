@@ -1,21 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   const startButton = document.getElementById("startButton");
+  const stopButton = document.getElementById("stopButton");
   const timerDisplay = document.getElementById("timer");
+
+  let timerInterval;
 
   startButton.addEventListener("click", function () {
 
-    alert("クリック成功");
+    clearInterval(timerInterval);
 
-    let count = 0;
+    let timeLeft = 10; // テスト用
 
-    setInterval(function () {
+    timerInterval = setInterval(function () {
 
-      count++;
+      timerDisplay.textContent = timeLeft;
 
-      alert("カウント " + count);
+      timeLeft--;
+
+      if (timeLeft < 0) {
+        clearInterval(timerInterval);
+      }
 
     }, 1000);
+
+  });
+
+  stopButton.addEventListener("click", function () {
+
+    clearInterval(timerInterval);
+
+    timerDisplay.textContent = "停止中";
 
   });
 
