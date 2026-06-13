@@ -1,65 +1,31 @@
-document.addEventListener("DOMContentLoaded", function () {
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>黒猫タイマー</title>
 
-  const startButton = document.getElementById("startButton");
-  const stopButton = document.getElementById("stopButton");
-  const timerDisplay = document.getElementById("timer");
-  const message = document.getElementById("message");
+  <link rel="icon" href="./favicon.png">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 
-  let timerInterval;
-  let timeLeft = 60 * 60;
-  let isRunning = false;
+  <link rel="stylesheet" href="./style.css?v=30">
+</head>
 
-  // 表示更新関数
-  function updateDisplay() {
-    let minutes = Math.floor(timeLeft / 60);
-    let seconds = timeLeft % 60;
+<body>
 
-    timerDisplay.textContent =
-      String(minutes).padStart(2, "0") + ":" +
-      String(seconds).padStart(2, "0");
-  }
+  <h1>黒猫タイマー</h1>
 
-  // 初期表示
-  updateDisplay();
+  <img src="./cat.png" alt="黒猫">
 
-  // スタート
-  startButton.addEventListener("click", function () {
+  <p id="timer">60:00</p>
 
-    if (isRunning) return;
+  <p id="message">スマホぼちぼちにね</p>
 
-    message.textContent = "タイマー開始やで";
-    isRunning = true;
+  <button id="startButton">スタート</button>
+  <button id="stopButton">ストップ</button>
 
-    timerInterval = setInterval(function () {
+  <!-- JSはここだけ -->
+  <script src="./app.js?v=54"></script>
 
-      timeLeft--;
-
-      updateDisplay();
-
-      // 30分メッセージ
-      if (timeLeft === 30 * 60) {
-        message.textContent = "休憩せーへん？";
-      }
-
-      // 終了
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        message.textContent = "今日はここまでにしとこか🐈‍⬛";
-        isRunning = false;
-      }
-
-    }, 1000);
-
-  });
-
-  // ストップ（ポーズ）
-  stopButton.addEventListener("click", function () {
-
-    clearInterval(timerInterval);
-    isRunning = false;
-
-    message.textContent = "停止したで";
-
-  });
-
-});
+</body>
+</html>
