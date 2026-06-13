@@ -1,37 +1,43 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  const startButton = document.getElementById("startButton");
-  const stopButton = document.getElementById("stopButton");
-  const timerDisplay = document.getElementById("timer");
+const startButton = document.getElementById("startButton");
+const stopButton = document.getElementById("stopButton");
+const timerDisplay = document.getElementById("timer");
 
-  let timerInterval;
+let timerInterval;
 
-  startButton.addEventListener("click", function () {
+startButton.addEventListener("click", function () {
 
+```
+clearInterval(timerInterval);
+
+let timeLeft = 10; // テスト用
+
+timerInterval = setInterval(function () {
+
+  timerDisplay.textContent = timeLeft;
+
+  timeLeft--;
+
+  if (timeLeft < 0) {
     clearInterval(timerInterval);
+  }
 
-    let timeLeft = 10; // テスト用
+}, 1000);
+```
 
-    timerInterval = setInterval(function () {
+});
 
-      timerDisplay.textContent = timeLeft;
+stopButton.addEventListener("click", function () {
 
-      timeLeft--;
+```
+alert("ストップ押された");
 
-      if (timeLeft < 0) {
-        clearInterval(timerInterval);
-      }
+clearInterval(timerInterval);
 
-    }, 1000);
+timerDisplay.textContent = "停止中";
+```
 
-  });
-
-  stopButton.addEventListener("click", function () {
-
-    clearInterval(timerInterval);
-
-    timerDisplay.textContent = "停止中";
-
-  });
+});
 
 });
