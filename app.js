@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const startButton = document.getElementById("startButton");
   const stopButton = document.getElementById("stopButton");
+  const resetButton = document.getElementById("resetButton");
   const timerDisplay = document.getElementById("timer");
   const message = document.getElementById("message");
 
@@ -30,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
     timerInterval = setInterval(function () {
 
       timeLeft--;
-
       updateDisplay();
 
       if (timeLeft === 30 * 60) {
@@ -53,6 +53,19 @@ document.addEventListener("DOMContentLoaded", function () {
     isRunning = false;
 
     message.textContent = "停止したで";
+
+  });
+
+  resetButton.addEventListener("click", function () {
+
+    clearInterval(timerInterval);
+    isRunning = false;
+
+    timeLeft = 60 * 60;
+
+    updateDisplay();
+
+    message.textContent = "リセットしたで";
 
   });
 
