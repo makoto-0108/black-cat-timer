@@ -1,32 +1,18 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>黒猫タイマー</title>
+<div class="card">
+  <div class="cat">🐈‍⬛</div>
 
-  <link rel="icon" href="./favicon.png">
-  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <div id="timerDisplay" class="timer">
+    60:00
+  </div>
 
-  <link rel="stylesheet" href="./style.css?v=30">
-</head>
+  <p>黒猫タイマー</p>
 
-<body>
+  <div class="buttons">
+    <button id="startButton">開始</button>
+    <button id="stopButton">停止</button>
+  </div>
 
-  <h1>黒猫タイマー</h1>
-
-  <img src="./cat.png" alt="黒猫">
-
-  <p id="timer">60:00</p>
-
-  <p id="message">スマホぼちぼちにね</p>
-
-  <button id="startButton">スタート</button>
-  <button id="stopButton">ストップ</button>
-  <button id="resetButton">リセット</button>
-
-  <!-- JSはここだけ -->
-  <script src="./app.js?v=56"></script>
-
-</body>
-</html>
+  <button id="resetButton">
+    リセット
+  </button>
+</div>
