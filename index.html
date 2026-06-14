@@ -4,31 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>黒猫タイマー</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <div class="card">
-    <div class="cat">
-  <img src="cat.png" alt="黒猫">
-</div>
 
+    <!-- 黒猫 -->
+    <div class="cat">
+      <img src="cat.png" alt="黒猫">
+    </div>
+
+    <!-- タイマー表示 -->
     <div id="timerDisplay" class="timer">
       60:00
     </div>
 
+    <!-- 説明 -->
     <p class="label">集中タイマー</p>
 
+    <!-- 操作ボタン -->
     <div class="buttons">
       <button id="startButton">開始</button>
       <button id="stopButton">停止</button>
     </div>
 
+    <!-- リセット -->
     <button id="resetButton" class="reset">
       リセット
     </button>
+
   </div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
