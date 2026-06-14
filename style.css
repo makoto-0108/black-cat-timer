@@ -20,9 +20,9 @@ body {
 }
 
 /* 黒猫 */
-.cat {
-  font-size: 64px;
-  margin-bottom: 20px;
+.cat img {
+  width: 120px;
+  height: auto;
 }
 
 /* タイマー数字 */
