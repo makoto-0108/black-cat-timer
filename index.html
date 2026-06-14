@@ -1,18 +1,32 @@
-<div class="card">
-  <div class="cat">🐈‍⬛</div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>黒猫タイマー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  <div id="timerDisplay" class="timer">
-    60:00
+  <div class="card">
+    <div class="cat">🐈‍⬛</div>
+
+    <div id="timerDisplay" class="timer">
+      60:00
+    </div>
+
+    <p class="label">集中タイマー</p>
+
+    <div class="buttons">
+      <button id="startButton">開始</button>
+      <button id="stopButton">停止</button>
+    </div>
+
+    <button id="resetButton" class="reset">
+      リセット
+    </button>
   </div>
 
-  <p>黒猫タイマー</p>
-
-  <div class="buttons">
-    <button id="startButton">開始</button>
-    <button id="stopButton">停止</button>
-  </div>
-
-  <button id="resetButton">
-    リセット
-  </button>
-</div>
+  <script src="script.js"></script>
+</body>
+</html>
