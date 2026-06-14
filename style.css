@@ -1,41 +1,64 @@
 body {
-  background: #f5f5f5;
+  margin: 0;
   font-family: sans-serif;
+  background: #f2f2f2;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
+/* 1枚カード */
 .card {
-  width: 320px;
+  width: 90%;
+  max-width: 420px;
   background: white;
   border-radius: 24px;
-  padding: 30px;
+  padding: 40px 24px;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
+/* 黒猫 */
 .cat {
   font-size: 64px;
   margin-bottom: 20px;
 }
 
+/* タイマー数字 */
 .timer {
-  font-size: 48px;
+  font-size: 72px;
   font-weight: bold;
   margin: 20px 0;
 }
 
-.buttons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
+/* 説明 */
+.label {
+  color: #666;
+  margin-bottom: 30px;
 }
 
+/* ボタン横並び */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* ボタン共通 */
 button {
   border: none;
   border-radius: 12px;
-  padding: 12px 20px;
+  padding: 14px 20px;
+  font-size: 16px;
   cursor: pointer;
+  background: #333;
+  color: white;
+}
+
+/* リセットだけ少し弱く */
+.reset {
+  background: #999;
+  width: 100%;
 }
