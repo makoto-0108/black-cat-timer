@@ -1,3 +1,4 @@
+console.log("JS読み込めてる");
 let time = 60 * 60;
 let timer = null;
 
