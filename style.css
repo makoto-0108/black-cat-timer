@@ -9,6 +9,7 @@ body {
   min-height: 100vh;
 }
 
+/* カード */
 .card {
   width: 90%;
   max-width: 420px;
@@ -19,30 +20,41 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
+/* 黒猫エリア */
 .cat {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
+/* 黒猫画像（ここが主役） */
 .cat img {
-  width: 110px;
+  width: 180px;   /* ←ここでサイズ調整 */
+  max-width: 100%;
   height: auto;
   display: block;
-  max-width: 100%;
+  transition: 0.2s;
 }
 
+/* ホバーで少し動く */
+.cat img:hover {
+  transform: scale(1.05);
+}
+
+/* タイマー */
 .timer {
   font-size: 72px;
   font-weight: bold;
   margin: 20px 0;
 }
 
+/* 説明 */
 .label {
   color: #666;
   margin-bottom: 24px;
 }
 
+/* ボタン群 */
 .buttons {
   display: flex;
   justify-content: center;
@@ -50,6 +62,7 @@ body {
   margin-bottom: 16px;
 }
 
+/* ボタン共通 */
 button {
   border: none;
   border-radius: 12px;
@@ -58,13 +71,27 @@ button {
   cursor: pointer;
   background: #333;
   color: white;
+  transition: 0.2s;
 }
 
+/* ホバー */
+button:hover {
+  opacity: 0.8;
+}
+
+/* リセットボタン */
 .reset {
   background: #999;
   width: 100%;
 }
 
-button:hover {
-  opacity: 0.8;
+/* スマホ調整 */
+@media (max-width: 480px) {
+  .timer {
+    font-size: 56px;
+  }
+
+  .cat img {
+    width: 140px;
+  }
 }
