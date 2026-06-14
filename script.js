@@ -6,15 +6,21 @@ let timer = null;
 const display = document.getElementById("timerDisplay");
 const speech = document.getElementById("catSpeech");
 
+// --------------------
 // タイマー表示更新
+// --------------------
 function updateDisplay() {
   const min = String(Math.floor(time / 60)).padStart(2, "0");
   const sec = String(time % 60).padStart(2, "0");
   display.textContent = `${min}:${sec}`;
 }
 
-// セリフ更新（スマホ中断アプリ風）
+// --------------------
+// セリフ更新（スマホ中断アプリ）
+// --------------------
 function updateSpeech() {
+  if (!speech) return; // 安全対策
+
   const elapsed = (60 * 60) - time; // 経過時間（秒）
 
   if (elapsed < 5 * 60) {
@@ -31,7 +37,9 @@ function updateSpeech() {
   }
 }
 
-// 開始
+// --------------------
+// 開始ボタン
+// --------------------
 document.getElementById("startButton").addEventListener("click", () => {
   if (timer) return;
 
@@ -39,33 +47,45 @@ document.getElementById("startButton").addEventListener("click", () => {
     if (time > 0) {
       time--;
       updateDisplay();
-      updateSpeech(); // ←セリフ更新
+      updateSpeech();
     } else {
       clearInterval(timer);
       timer = null;
-      speech.textContent = "終わったにゃ。えらいにゃ";
+      speech.textContent = "終わったにゃ。ちゃんとできたにゃ";
     }
   }, 1000);
 });
 
-// 停止
+// --------------------
+// 停止ボタン
+// --------------------
 document.getElementById("stopButton").addEventListener("click", () => {
   clearInterval(timer);
   timer = null;
-  speech.textContent = "ちょっと休憩するにゃ";
+
+  if (speech) {
+    speech.textContent = "ちょっと休憩するにゃ";
+  }
 });
 
-// リセット
+// --------------------
+// リセットボタン
+// --------------------
 document.getElementById("resetButton").addEventListener("click", () => {
   clearInterval(timer);
   timer = null;
 
   time = 60 * 60;
+
   updateDisplay();
 
-  speech.textContent = "準備できてるにゃ";
+  if (speech) {
+    speech.textContent = "準備できてるにゃ";
+  }
 });
 
+// --------------------
 // 初期表示
+// --------------------
 updateDisplay();
 updateSpeech();
