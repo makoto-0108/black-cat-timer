@@ -1,3 +1,4 @@
+alert(Notification.permission);
 let timerInterval;
 
 // 通知許可
