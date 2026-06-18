@@ -1,91 +1,122 @@
-console.log("script.js 読み込みOK");
+let timerInterval;
 
-let time = 60 * 60; // 60分
-let timer = null;
-
-const display = document.getElementById("timerDisplay");
-const speech = document.getElementById("catSpeech");
-
-// --------------------
-// タイマー表示更新
-// --------------------
-function updateDisplay() {
-  const min = String(Math.floor(time / 60)).padStart(2, "0");
-  const sec = String(time % 60).padStart(2, "0");
-  display.textContent = `${min}:${sec}`;
+// 通知許可
+if ("Notification" in window) {
+  Notification.requestPermission();
 }
 
-// --------------------
-// セリフ更新（スマホ中断アプリ）
-// --------------------
-function updateSpeech() {
-  if (!speech) return; // 安全対策
+// 通知関数
+function sendNotification(title, message) {
 
-  const elapsed = (60 * 60) - time; // 経過時間（秒）
+  if (Notification.permission === "granted") {
 
-  if (elapsed < 5 * 60) {
-    speech.textContent = "スマホ、ちょっと休憩するにゃ";
-  } 
-  else if (elapsed < 20 * 60) {
-    speech.textContent = "スマホ、ぼちぼち離れてみるにゃ";
-  } 
-  else if (elapsed < 30 * 60) {
-    speech.textContent = "そろそろスマホやめてみるにゃ？";
-  } 
-  else {
-    speech.textContent = "スマホ置けたにゃ。えらいにゃ";
+    new Notification(title, {
+      body: message,
+      icon: "cat.png"
+    });
+
   }
+
 }
 
-// --------------------
-// 開始ボタン
-// --------------------
-document.getElementById("startButton").addEventListener("click", () => {
-  if (timer) return;
+// スタート
+document.getElementById("startButton").addEventListener("click", function () {
 
-  timer = setInterval(() => {
-    if (time > 0) {
-      time--;
-      updateDisplay();
-      updateSpeech();
-    } else {
-      clearInterval(timer);
-      timer = null;
-      speech.textContent = "終わったにゃ。ちゃんとできたにゃ";
+  clearInterval(timerInterval);
+
+  let timeLeft = 60 * 60;
+
+  const timerDisplay =
+    document.getElementById("timerDisplay");
+
+  const catSpeech =
+    document.getElementById("catSpeech");
+
+  catSpeech.textContent =
+    "スマホぼちぼちにね";
+
+  timerInterval = setInterval(function () {
+
+    let minutes =
+      Math.floor(timeLeft / 60);
+
+    let seconds =
+      timeLeft % 60;
+
+    timerDisplay.textContent =
+      String(minutes).padStart(2, "0") +
+      ":" +
+      String(seconds).padStart(2, "0");
+
+    // テスト通知（開始2分後）
+    if (timeLeft === 58 * 60) {
+
+      catSpeech.textContent =
+        "ちょっと休憩するにゃ";
+
+      sendNotification(
+        "🐈‍⬛ 黒猫タイマー",
+        "休憩せーへん？"
+      );
+
     }
+
+    // 本番用
+    /*
+    if (timeLeft === 30 * 60) {
+
+      catSpeech.textContent =
+        "ちょっと休憩するにゃ";
+
+      sendNotification(
+        "🐈‍⬛ 黒猫タイマー",
+        "30分経ったにゃ"
+      );
+
+    }
+    */
+
+    // 終了
+    if (timeLeft <= 0) {
+
+      catSpeech.textContent =
+        "今日はここまでにしとこか";
+
+      sendNotification(
+        "🐈‍⬛ 黒猫タイマー",
+        "おつかれさま🐈‍⬛"
+      );
+
+      clearInterval(timerInterval);
+
+      return;
+    }
+
+    timeLeft--;
+
   }, 1000);
+
 });
 
-// --------------------
-// 停止ボタン
-// --------------------
-document.getElementById("stopButton").addEventListener("click", () => {
-  clearInterval(timer);
-  timer = null;
+// 停止
+document.getElementById("stopButton").addEventListener("click", function () {
 
-  if (speech) {
-    speech.textContent = "ちょっと休憩するにゃ";
-  }
+  clearInterval(timerInterval);
+
+  document.getElementById("catSpeech").textContent =
+    "おつかれさま。またね🐈‍⬛";
+
 });
 
-// --------------------
-// リセットボタン
-// --------------------
-document.getElementById("resetButton").addEventListener("click", () => {
-  clearInterval(timer);
-  timer = null;
+// リセット
+document.getElementById("resetButton").addEventListener("click", function () {
 
-  time = 60 * 60;
+  clearInterval(timerInterval);
 
-  updateDisplay();
+  document.getElementById("timerDisplay").textContent =
+    "60:00";
 
-  if (speech) {
-    speech.textContent = "準備できてるにゃ";
-  }
+  document.getElementById("catSpeech").textContent =
+    "スマホぼちぼちにね";
+
 });
-
-// --------------------
-// 初期表示
-// --------------------
-updateDisplay();
-updateSpeech();
