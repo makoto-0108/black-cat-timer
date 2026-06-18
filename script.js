@@ -1,3 +1,4 @@
+alert("こんにちは");
 alert(Notification.permission);
 let timerInterval;
 
