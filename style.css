@@ -1,12 +1,20 @@
+html,
 body {
   background-color: #000000;
+  margin: 0;
+  min-height: 100vh;
+}
+
+body {
   border: 4px solid #2E8B57;
   border-radius: 20px;
   margin: 20px;
   padding: 20px;
   color: white;
   text-align: center;
+  box-sizing: border-box;
 }
+
 /* 黒猫エリア */
 .cat {
   display: flex;
@@ -14,31 +22,36 @@ body {
   margin-bottom: 20px;
 }
 
-/* 黒猫画像（ここが主役） */
-.cat img {
-  width: 180px;   /* ←ここでサイズ調整 */
+/* 黒猫画像 */
+.cat img,
+img {
+  width: 180px;
   max-width: 100%;
   height: auto;
   display: block;
+  margin: 0 auto;
   transition: 0.2s;
 }
 
-/* ホバーで少し動く */
-.cat img:hover {
+/* ホバー */
+.cat img:hover,
+img:hover {
   transform: scale(1.05);
 }
 
 /* タイマー */
-.timer {
+.timer,
+#timer {
   font-size: 72px;
   font-weight: bold;
   margin: 20px 0;
+  color: #2E8B57;
 }
 
-/* 説明 */
-.label {
-  color: #666;
-  margin-bottom: 24px;
+/* メッセージ */
+#message {
+  font-size: 20px;
+  margin: 20px 0;
 }
 
 /* ボタン群 */
@@ -56,9 +69,10 @@ button {
   padding: 14px 20px;
   font-size: 16px;
   cursor: pointer;
-  background: #333;
+  background: #2E8B57;
   color: white;
   transition: 0.2s;
+  margin: 5px;
 }
 
 /* ホバー */
@@ -66,19 +80,20 @@ button:hover {
   opacity: 0.8;
 }
 
-/* リセットボタン */
-.reset {
-  background: #999;
-  width: 100%;
-}
-
-/* スマホ調整 */
+/* スマホ対応 */
 @media (max-width: 480px) {
-  .timer {
+
+  .timer,
+  #timer {
     font-size: 56px;
   }
 
-  .cat img {
+  .cat img,
+  img {
     width: 140px;
+  }
+
+  #message {
+    font-size: 18px;
   }
 }
