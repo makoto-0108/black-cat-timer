@@ -5,60 +5,77 @@ body {
   min-height: 100vh;
 }
 
+/* カード全体 */
 body {
-  border: 4px solid #8FD3C1;
-  border-radius: 20px;
-  margin: 20px;
-  padding: 20px;
   color: white;
-  text-align: center;
-  box-sizing: border-box;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* タイトル */
-h1 {
-  color: #FFF5D6;
-  margin-bottom: 20px;
+.card {
+  width: 90%;
+  max-width: 400px;
+  border: 4px solid #8FD3C1;
+  border-radius: 24px;
+  padding: 24px;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #253244;
 }
 
 /* 黒猫 */
-img {
-  width: 120px;
-  max-width: 100%;
+.cat img {
+  width: 90px;
   height: auto;
   display: block;
-  margin: 0 auto 15px auto;
-  transition: 0.2s;
+  margin: 0 auto 16px;
+  transition: transform 0.2s;
 }
 
-img:hover {
+.cat img:hover {
   transform: scale(1.05);
 }
 
 /* タイマー */
-#timer {
+.timer {
   font-size: 56px;
   font-weight: bold;
   color: #FFF5D6;
-  margin: 10px 0;
+  margin-bottom: 12px;
 }
 
-/* メッセージ */
-#message {
-  font-size: 20px;
+/* セリフ */
+.speech {
   color: #E8F5F1;
-  margin: 20px 0;
+  font-size: 18px;
   min-height: 30px;
+  margin-bottom: 16px;
 }
 
-/* ボタン */
+/* アプリ名 */
+.label {
+  color: #BFD8D2;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* ボタンエリア */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+/* ボタン共通 */
 button {
   background-color: #8FD3C1;
   color: #1F2937;
   border: none;
   border-radius: 12px;
-  padding: 12px 20px;
-  margin: 5px;
+  padding: 12px 18px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -67,25 +84,30 @@ button {
 
 button:hover {
   opacity: 0.85;
-  transform: translateY(-2px);
 }
 
-/* スマホ対応 */
+/* リセット */
+.reset {
+  width: 100%;
+}
+
+/* スマホ */
 @media (max-width: 480px) {
 
-  img {
-    width: 100px;
+  .cat img {
+    width: 80px;
   }
 
-  #timer {
-    font-size: 42px;
+  .timer {
+    font-size: 44px;
   }
 
-  #message {
-    font-size: 18px;
+  .speech {
+    font-size: 16px;
   }
 
   button {
-    width: 120px;
+    font-size: 15px;
   }
+
 }
