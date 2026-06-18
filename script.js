@@ -1,5 +1,5 @@
-alert("こんにちは");
 alert(Notification.permission);
+
 let timerInterval;
 
 // 通知許可
@@ -50,8 +50,10 @@ document.getElementById("startButton").addEventListener("click", function () {
       ":" +
       String(seconds).padStart(2, "0");
 
-    // テスト通知（開始2分後）
-    if (timeLeft === 58 * 60) {
+    // テスト（開始から約10秒後）
+    if (timeLeft === 3590) {
+
+      alert("通知テスト");
 
       catSpeech.textContent =
         "ちょっと休憩するにゃ";
@@ -63,20 +65,13 @@ document.getElementById("startButton").addEventListener("click", function () {
 
     }
 
-    // 本番用
-    /*
+    // 30分経過
     if (timeLeft === 30 * 60) {
 
       catSpeech.textContent =
-        "ちょっと休憩するにゃ";
-
-      sendNotification(
-        "🐈‍⬛ 黒猫タイマー",
-        "30分経ったにゃ"
-      );
+        "休憩せーへん？";
 
     }
-    */
 
     // 終了
     if (timeLeft <= 0) {
