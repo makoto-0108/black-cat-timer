@@ -1,99 +1,48 @@
 html,
 body {
-  background-color: #000000;
+  background-color: #1F2937;
   margin: 0;
   min-height: 100vh;
 }
 
 body {
-  border: 4px solid #2E8B57;
+  border: 4px solid #8FD3C1;
   border-radius: 20px;
   margin: 20px;
   padding: 20px;
-  color: white;
+  color: #FFFFFF;
   text-align: center;
   box-sizing: border-box;
 }
 
-/* 黒猫エリア */
-.cat {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-/* 黒猫画像 */
-.cat img,
-img {
-  width: 180px;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  transition: 0.2s;
-}
-
-/* ホバー */
-.cat img:hover,
-img:hover {
-  transform: scale(1.05);
-}
-
 /* タイマー */
-.timer,
 #timer {
   font-size: 72px;
   font-weight: bold;
   margin: 20px 0;
-  color: #2E8B57;
+  color: #FFF5D6;
 }
 
 /* メッセージ */
 #message {
   font-size: 20px;
   margin: 20px 0;
+  color: #E8F5F1;
 }
 
-/* ボタン群 */
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-/* ボタン共通 */
+/* ボタン */
 button {
   border: none;
   border-radius: 12px;
   padding: 14px 20px;
   font-size: 16px;
   cursor: pointer;
-  background: #2E8B57;
-  color: white;
+  background: #8FD3C1;
+  color: #1F2937;
   transition: 0.2s;
   margin: 5px;
 }
 
-/* ホバー */
 button:hover {
-  opacity: 0.8;
-}
-
-/* スマホ対応 */
-@media (max-width: 480px) {
-
-  .timer,
-  #timer {
-    font-size: 56px;
-  }
-
-  .cat img,
-  img {
-    width: 140px;
-  }
-
-  #message {
-    font-size: 18px;
-  }
+  opacity: 0.85;
 }
