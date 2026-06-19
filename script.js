@@ -1,5 +1,10 @@
 let timerInterval;
 
+// 通知許可
+if ("Notification" in window) {
+  Notification.requestPermission();
+}
+
 // 黒猫のセリフ
 const catMessages = [
   "スマホぼちぼちにね",
@@ -11,16 +16,35 @@ const catMessages = [
   "深呼吸しとこか",
   "よう頑張っとるな",
   "無理したらあかんで",
-  "まだ見てるん？🐈‍⬛"
+  "まだ見てるん？🐈‍⬛",
+  "猫をなでる時間やで",
+  "外の空気吸わへん？",
+  "ストレッチしとこか",
+  "ちょっと窓の外見てみ",
+  "今日もええ感じやで"
 ];
 
-// ランダム表示
+// ランダムセリフ
 function randomCatMessage() {
 
   const randomIndex =
     Math.floor(Math.random() * catMessages.length);
 
   return catMessages[randomIndex];
+
+}
+
+// 通知
+function sendNotification(title, message) {
+
+  if (Notification.permission === "granted") {
+
+    new Notification(title, {
+      body: message,
+      icon: "favicon.png"
+    });
+
+  }
 
 }
 
@@ -57,11 +81,16 @@ document.getElementById("startButton").addEventListener("click", function () {
     if (timeLeft === 30 * 60) {
 
       catSpeech.textContent =
-        randomCatMessage();
+        "30分経ったで。休憩せーへん？";
+
+      sendNotification(
+        "🐈‍⬛ 黒猫タイマー",
+        "30分経ったで。休憩せーへん？"
+      );
 
     }
 
-    // 1分ごとにランダム表示（不要なら削除OK）
+    // 1分ごとにセリフ変更
     if (timeLeft % 60 === 0) {
 
       catSpeech.textContent =
@@ -74,6 +103,11 @@ document.getElementById("startButton").addEventListener("click", function () {
 
       catSpeech.textContent =
         "今日はここまでにしとこか🐈‍⬛";
+
+      sendNotification(
+        "🐈‍⬛ 黒猫タイマー",
+        "60分おつかれさま！"
+      );
 
       clearInterval(timerInterval);
 
