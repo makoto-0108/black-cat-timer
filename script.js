@@ -1,5 +1,29 @@
 let timerInterval;
 
+// 黒猫のセリフ
+const catMessages = [
+  "スマホぼちぼちにね",
+  "休憩せーへん？",
+  "水飲みや〜",
+  "目ぇ疲れてへん？",
+  "肩回してみよか",
+  "ちょっと立ってみる？",
+  "深呼吸しとこか",
+  "よう頑張っとるな",
+  "無理したらあかんで",
+  "まだ見てるん？🐈‍⬛"
+];
+
+// ランダム表示
+function randomCatMessage() {
+
+  const randomIndex =
+    Math.floor(Math.random() * catMessages.length);
+
+  return catMessages[randomIndex];
+
+}
+
 // スタート
 document.getElementById("startButton").addEventListener("click", function () {
 
@@ -14,7 +38,7 @@ document.getElementById("startButton").addEventListener("click", function () {
     document.getElementById("catSpeech");
 
   catSpeech.textContent =
-    "タイマー開始にゃ";
+    randomCatMessage();
 
   timerInterval = setInterval(function () {
 
@@ -29,21 +53,19 @@ document.getElementById("startButton").addEventListener("click", function () {
       ":" +
       String(seconds).padStart(2, "0");
 
-    // 10秒後テスト
-    if (timeLeft === 3590) {
-
-      alert("10秒経過したにゃ");
-
-      catSpeech.textContent =
-        "休憩せーへん？";
-
-    }
-
     // 30分経過
     if (timeLeft === 30 * 60) {
 
       catSpeech.textContent =
-        "ちょっと休憩するにゃ";
+        randomCatMessage();
+
+    }
+
+    // 1分ごとにランダム表示（不要なら削除OK）
+    if (timeLeft % 60 === 0) {
+
+      catSpeech.textContent =
+        randomCatMessage();
 
     }
 
@@ -51,11 +73,12 @@ document.getElementById("startButton").addEventListener("click", function () {
     if (timeLeft <= 0) {
 
       catSpeech.textContent =
-        "今日はここまでにしとこか";
+        "今日はここまでにしとこか🐈‍⬛";
 
       clearInterval(timerInterval);
 
       return;
+
     }
 
     timeLeft--;
@@ -83,6 +106,6 @@ document.getElementById("resetButton").addEventListener("click", function () {
     "60:00";
 
   document.getElementById("catSpeech").textContent =
-    "スマホぼちぼちにね";
+    randomCatMessage();
 
 });
