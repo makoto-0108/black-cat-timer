@@ -4,51 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="黒猫タイマー">
-<meta property="og:description" content="スマホ休憩をうながす黒猫タイマー">
-<meta property="og:image" content="https://makoto-0108.github.io/black-cat-timer/cat.png">
-<meta property="og:type" content="website">
+
+  <!-- OGP -->
+  <meta property="og:title"
+        content="黒猫タイマー">
+
+  <meta property="og:description"
+        content="スマホ休憩をうながす黒猫タイマー">
+
+  <meta property="og:image"
+        content="https://makoto-0108.github.io/black-cat-timer/cat.png">
+
+  <meta property="og:url"
+        content="https://makoto-0108.github.io/black-cat-timer/">
+
+  <meta property="og:type"
+        content="website">
+
+  <meta name="twitter:card"
+        content="summary_large_image">
 
   <title>黒猫タイマー</title>
 
+  <!-- アイコン -->
   <link rel="icon" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
 
+  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
 
   <meta name="theme-color"
         content="#1F2937">
 
-  <link rel="stylesheet" href="style.css">
+  <!-- CSS -->
+  <link rel="stylesheet"
+        href="style.css">
+
 </head>
+
 <body>
 
   <div class="card">
 
     <div class="cat">
-      <img src="cat.png" alt="黒猫">
+      <img src="cat.png"
+           alt="黒猫">
     </div>
 
-    <div id="timerDisplay" class="timer">
+    <div id="timerDisplay"
+         class="timer">
       60:00
     </div>
-    <p id="catSpeech" class="speech"></p>
 
-    <p class="label">スマホ休憩アプリ</p>
+    <p id="catSpeech"
+       class="speech">
+    </p>
+
+    <p class="label">
+      スマホ休憩アプリ
+    </p>
 
     <div class="buttons">
-      <button id="startButton">開始</button>
-      <button id="stopButton">停止</button>
+      <button id="startButton">
+        開始
+      </button>
+
+      <button id="stopButton">
+        停止
+      </button>
     </div>
 
-    <button id="resetButton" class="reset">
+    <button id="resetButton"
+            class="reset">
       リセット
     </button>
 
   </div>
 
-  <!-- ここ超重要：ファイル名一致 -->
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
