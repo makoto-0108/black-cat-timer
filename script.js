@@ -143,3 +143,15 @@ document.getElementById("resetButton").addEventListener("click", function () {
     randomCatMessage();
 
 });
+if ("serviceWorker" in navigator) {
+
+  navigator.serviceWorker
+    .register("sw.js")
+    .then(() => {
+      console.log("Service Worker登録成功");
+    })
+    .catch((error) => {
+      console.log("Service Worker登録失敗", error);
+    });
+
+}
