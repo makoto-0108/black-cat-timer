@@ -1,6 +1,11 @@
-self.addEventListener("install", function(event) {
-  console.log("Service Worker installed");
+self.addEventListener("install", (event) => {
+  console.log("🐈‍⬛ Service Worker installed");
 });
 
-self.addEventListener("fetch", function(event) {
+self.addEventListener("activate", (event) => {
+  console.log("🐈‍⬛ Service Worker activated");
+});
+
+self.addEventListener("fetch", (event) => {
+  // 今は何もしない
 });
