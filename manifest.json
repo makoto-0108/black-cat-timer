@@ -1,0 +1,16 @@
+{
+  "name": "黒猫タイマー",
+  "short_name": "黒猫",
+  "description": "スマホ休憩をうながす黒猫タイマー",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#1F2937",
+  "theme_color": "#1F2937",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
